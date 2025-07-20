@@ -66,17 +66,17 @@
 
 ✅ 8. Set up Gunicorn as a systemd Service
         Create Gunicorn service file:
-        sudo nano /etc/systemd/system/gunicorn.service
-        [Unit]
-        Description=gunicorn daemon for Django project
-        After=network.target
-        [Service]
-        User=yourusername
-        Group=www-data
-        WorkingDirectory=/var/www/dfcms
-        ExecStart=/var/www/dfcms/venv/bin/gunicorn --access-logfile - --workers 3       --bind 127.0.0.1:8000 core.wsgi:application
-        [Install]
-        WantedBy=multi-user.target
+            sudo nano /etc/systemd/system/gunicorn.service
+            [Unit]
+            Description=gunicorn daemon for Django project
+            After=network.target
+            [Service]
+            User=yourusername
+            Group=www-data
+            WorkingDirectory=/var/www/dfcms
+            ExecStart=/var/www/dfcms/venv/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8000 core.wsgi:application
+            [Install]
+            WantedBy=multi-user.target
 
         Then run:
             sudo systemctl daemon-reexec
